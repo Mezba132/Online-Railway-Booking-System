@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Railway_OnlineTicket.Models.Fare_Query>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+   @if(@ViewBag.Message != null)
+    {
+        @ViewBag.Message
+    }
+    <!--><div class="form-horizontal">
+        <div class="form-group align-center">
+            <div class="input-group">
+                <input type="text" placeholder="Search Date or Train Name" id="train" class="form-control pull-right">
+                <span class="input-group-btn">
+                    <input class="btn btn-default" type="submit" value="Search" /></input>
+                </span>
+            </div>
+        </div>
+        </div>-->
+<!---<div class="input-group ">
+    <input type="text" class="form-control" id="journeydate" />
+    <input type="submit" value="Search" class="btn btn-default" />
+</div>-->
+<p>
+    @Html.ActionLink("search trains", "Search")
+</p>
+<p>
+    @Html.ActionLink("Create New Train Schedule", "Farequery")
+</p>
+<p>
+    @Html.ActionLink("Databse Report", "Farequery")
+</p>
+<br /><br />
+<div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.journey_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.journey_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.station_from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.station_to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.train_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.train_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departure_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unique_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available_seat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.journey_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.journey_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.station_from)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.station_to)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.train_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.train_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departure_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unique_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available_seat)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ticketid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ticketid })
+            </td>
+        </tr>
+    }
+</table>
+    </div>

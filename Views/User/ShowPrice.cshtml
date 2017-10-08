@@ -1,0 +1,118 @@
+﻿@model Railway_OnlineTicket.Models.Fare_Query
+
+@{
+    ViewBag.Title = "ShowPrice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowPrice</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>FareQuery</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border=1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <div class="form-group">
+            @Html.Label("journey_date", "Journey Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.journey_date, new { htmlAttributes = new { @class = "form-control", @id = "journeydate" } })
+                @Html.ValidationMessageFor(model => model.journey_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.station_from,"Station From", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.station_from, new SelectListItem[]{
+                new SelectListItem() {Text = "Dhaka", Value="Dhaka"},
+                new SelectListItem() {Text = "Khulna", Value="Khulna"},
+                new SelectListItem() {Text = "Sylhet", Value="Sylhet"},
+                new SelectListItem() {Text = "Rangpur", Value="Rangpur"}}, new { @class = "form-control", @id = "stationfrom" })
+                @Html.ValidationMessageFor(model => model.station_from, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.station_to,"Station To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.station_to, new SelectListItem[]{
+                new SelectListItem() {Text = "Dhaka", Value="Dhaka"},
+                new SelectListItem() {Text = "Khulna", Value="Khulna"},
+                new SelectListItem() {Text = "Sylhet", Value="Sylhet"},
+                new SelectListItem() {Text = "Rangpur", Value="Rangpur"}}, new { @class = "form-control", @id = "stationto" })
+                @Html.ValidationMessageFor(model => model.station_to, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.train_name,"Train Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.train_name, new SelectListItem[]{
+                new SelectListItem() {Text = "Chitra", Value="Chitra"},
+                new SelectListItem() {Text = "Shundorbon", Value="Shundorbon"},
+                new SelectListItem() {Text = "Maitri", Value="Maitri"},
+                new SelectListItem() {Text = "Kopotakho", Value="Kopotakho"}}, new { @class = "form-control", @id = "trainname" })
+                @Html.ValidationMessageFor(model => model.train_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Class, "Class", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Class, new SelectListItem[]{
+                new SelectListItem() {Text = "AC", Value="AC"},
+                new SelectListItem() {Text = "SHOVON", Value="SHOVON"},
+                new SelectListItem() {Text = "CHAIR", Value="CHAIR"}}, new { @class = "form-control", @id = "class" })
+                @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Available_seat, "Seats", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Available_seat, new SelectListItem[]{
+                new SelectListItem() {Text = "1", Value="1"},
+                new SelectListItem() {Text = "2", Value="2" },
+                new SelectListItem() {Text = "3", Value="3"}}, new { @class = "form-control", @id = "seat" })
+                @Html.ValidationMessageFor(model => model.Available_seat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" id="sprice" class="ui-button ui-widget ui-corner-all" />
+            </div>
+        </div>
+    </div>
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $('#journeydate').datepicker({
+            minDate: 0,
+            maxDate: "10D"
+        });
+        $("#journeydate").datepicker("option", "dateFormat", "yy-mm-dd");
+        $('#stationfrom').selectmenu();
+        $('#stationto').selectmenu();
+        $('#trainname').selectmenu();
+        $('#class').selectmenu();
+        $('#seat').selectmenu();
+        $('#sprice').button();
+    })
+</script>

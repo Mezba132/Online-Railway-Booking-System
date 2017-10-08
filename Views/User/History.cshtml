@@ -1,0 +1,90 @@
+﻿@model Railway_OnlineTicket.Models.Purchase_Ticket
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>History</h2>
+
+<div>
+    <h4>Purchase_Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Journey_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Journey_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Station_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Station_To)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station_To)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.train_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.train_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

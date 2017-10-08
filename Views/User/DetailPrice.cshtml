@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "DetailPrice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DetailPrice</h1>
+<h1>------------------------------------------------------------------------------------</h1>
+
+@using (Html.BeginForm())
+{
+
+   if (@ViewBag.Message != null)
+    {
+        @ViewBag.Message
+    }
+
+  if (Session["ticketid"] != null)
+  {
+    <h3>Journey Date  : @Session["journey_date"].ToString()</h3>
+    <br />
+    <h3>Station Form  : @Session["station_from"].ToString()</h3>
+    <br />
+    <h3>Station To    : @Session["station_to"].ToString()</h3>
+    <br />
+    <h3>Train Nmae    : @Session["train_name"].ToString()</h3>
+    <br />
+    <h3>Class         : @Session["Class"].ToString()</h3>
+    <br />
+    <h3>Selected Seat : @Session["Available_seat"].ToString()</h3>
+    <br />
+    <h3>Total Price   : @Session["total_price"].ToString()</h3>
+   }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Buy Ticket" id="sprice" class="ui-button ui-widget ui-corner-all" />
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(function ()
+    {
+        $('#sprice').button();
+    })
+</script>
